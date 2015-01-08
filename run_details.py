@@ -1,1 +1,1 @@
-../RA1_Offline_Analysis/run_details.py
+../ICF_Offline_Analysis/run_details.py

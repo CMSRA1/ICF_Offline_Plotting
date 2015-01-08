@@ -990,7 +990,7 @@ class Plotter(object):
             plot.GetYaxis().SetTitleOffset(1.3)
             plot.GetYaxis().SetTitle("Events / 0.1")
           if not norebin:
-            plot.Rebin(25)
+            plot.Rebin(1)
             self.OverFlow_Bin(plot,0,10.,5.0)
 
         if "MHT_vs_MET" in histogram:
@@ -1321,16 +1321,16 @@ class Webpage_Maker(object):
         print "       ======== Making Webpage ========"
         print "       ********************************\n\n"
         self.webdir = self.title+"_plots_"+strftime("%d_%b_%H")
-        self.ensure_dir("/Users/chrislucas/SUSY/AnalysisCode/Website_Plots/"+self.webdir)
+        self.ensure_dir("/home/hep/mc3909/RA1Offline/Website_Plots/"+self.webdir)
         for root,dirs,files in os.walk('./Plots'):
           for filename in fnmatch.filter(files,'*'):
               name = os.path.join(root,filename)
-              os.system('cp ' +name+ ' /Users/chrislucas/SUSY/AnalysisCode/Website_Plots/'+self.webdir+'/')
+              os.system('cp ' +name+ ' /home/hep/mc3909/RA1Offline/Website_Plots/'+self.webdir+'/')
         
         if option == "Normal":
           for i in plotnames:
               counter = 0
-              htF = open('/Users/chrislucas/SUSY/AnalysisCode/Website_Plots/'+self.webdir+'/'+i+'.html','w')
+              htF = open('/home/hep/mc3909/RA1Offline/Website_Plots/'+self.webdir+'/'+i+'.html','w')
               htF.write('Author: Darren Burton <br> \n')
               htF.write('<script language="Javascript"> \n document.write("Last Modified: " + document.lastModified + ""); \n </script> <br> \n ')
               htF.write('<center>\n <p> \n <font size="5"> Binned Muon Control Sample </font>\n </p>\n') 
@@ -1377,9 +1377,9 @@ class Webpage_Maker(object):
         for i in outer:
           for j in inner:
             counter = 0
-            if simplified:htF = open('/Users/chrislucas/SUSY/AnalysisCode/Website_Plots/'+self.webdir+'/Simplified_'+j+'_'+i+'.html','w')
-            elif stacked: htF = open('/Users/chrislucas/SUSY/AnalysisCode/Website_Plots/'+self.webdir+'/Stacked_'+j+'_'+i+'.html','w')
-            else: htF = open('/Users/chrislucas/SUSY/AnalysisCode/Website_Plots/'+self.webdir+'/'+j+'_'+i+'.html','w')
+            if simplified:htF = open('/home/hep/mc3909/RA1Offline/Website_Plots/'+self.webdir+'/Simplified_'+j+'_'+i+'.html','w')
+            elif stacked: htF = open('/home/hep/mc3909/RA1Offline/Website_Plots/'+self.webdir+'/Stacked_'+j+'_'+i+'.html','w')
+            else: htF = open('/home/hep/mc3909/RA1Offline/Website_Plots/'+self.webdir+'/'+j+'_'+i+'.html','w')
             htF.write('Author: Darren Burton <br> \n')
             htF.write('<script language="Javascript"> \n document.write("Last Modified: " + document.lastModified + ""); \n </script> <br> \n ')
             htF.write('<center>\n <p> \n <font size="5"> '+self.title+' Plots </font>\n </p>\n') 
@@ -1434,7 +1434,7 @@ class Webpage_Maker(object):
               for num,entry in enumerate(self.btag_names): 
                 self.btag_names[entry] = self.btag_names[entry].rstrip('_')
                 if num == 0: self.btag_names[entry] = ""
-            for root,dirs,files in os.walk('/Users/chrislucas/SUSY/AnalysisCode/Website_Plots/'+self.webdir):
+            for root,dirs,files in os.walk('/home/hep/mc3909/RA1Offline/Website_Plots/'+self.webdir):
               sorter = []
               test_sorter = []
               if not slice:
